@@ -1,0 +1,1 @@
+{"version":"v1","folds":[{"fold":"loso_upenn","held_out_site":"UPENN","train_sites":["UCSF","TCGA"]},{"fold":"loso_ucsf","held_out_site":"UCSF","train_sites":["UPENN","TCGA"]},{"fold":"loso_tcga","held_out_site":"TCGA","train_sites":["UPENN","UCSF"]}]}

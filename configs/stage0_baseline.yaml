@@ -1,0 +1,38 @@
+extends: base.yaml
+stage: 0
+stage_name: stage_0_baseline
+backbone:
+  architecture: compact_resnet3d
+  in_channels: 4
+  feature_dim: 128
+  dropout: 0.2
+  pretrained_checkpoint: null
+fusion:
+  mode: gated
+  deep_feature_dim: 128
+  radiomics_feature_dim: 16
+  fused_feature_dim: 128
+heads:
+  mgmt:
+    input_dim: 128
+    hidden_dim: 64
+    learning_rate: 0.0001
+    weight_decay: 0.0001
+    dropout: 0.2
+    freeze_backbone_fraction: 0.0
+  idh:
+    input_dim: 128
+    hidden_dim: 64
+    learning_rate: 0.00005
+    weight_decay: 0.001
+    dropout: 0.4
+    freeze_backbone_fraction: 0.5
+training:
+  batch_size: 4
+  epochs: 2
+  early_stopping_patience: 2
+  checkpoint_criterion: mgmt_val_auroc
+  synthetic_smoke_subjects_per_site: 12
+  synthetic_volume_shape: [8, 8, 8]
+  synthetic_radiomics_dim: 16
+  allow_synthetic_when_data_missing: true
