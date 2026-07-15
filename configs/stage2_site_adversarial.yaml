@@ -1,0 +1,3 @@
+extends: base.yaml
+stage: 2
+stage_name: stage_2_site_adversarial

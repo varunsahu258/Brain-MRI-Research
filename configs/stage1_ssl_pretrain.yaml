@@ -1,0 +1,3 @@
+extends: base.yaml
+stage: 1
+stage_name: stage_1_ssl_pretrain
