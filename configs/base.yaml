@@ -1,0 +1,29 @@
+project: radiogenomics_multisite
+seed: 42
+device: auto
+paths:
+  upenn_root: data/raw/UPENN-GBM
+  ucsf_pdgm_root: data/raw/UCSF-PDGM
+  tcga_gbm_root: data/raw/TCGA-GBM
+  audit_output: outputs/audit
+  results_root: outputs/results
+  splits_dir: configs
+  external_test_lock: outputs/external_test_lock.json
+logging:
+  mlflow_tracking_uri: outputs/mlruns
+  experiment_name: radiogenomics_staged_pipeline
+cv:
+  n_splits: 5
+  random_state: 42
+  loso_folds_file: configs/loso_folds_v1.json
+regularization_budget:
+  mgmt_head:
+    learning_rate: 0.0001
+    weight_decay: 0.0001
+    dropout: 0.2
+    freeze_backbone_fraction: 0.0
+  idh_head:
+    learning_rate: 0.00005
+    weight_decay: 0.001
+    dropout: 0.4
+    freeze_backbone_fraction: 0.5
